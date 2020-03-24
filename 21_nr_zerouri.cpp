@@ -40,10 +40,12 @@ int nr_zerouri() {
       n /= 5;
     }
 
-    if (nr_2 < nr_5)
+    // se ia in considerare valoarea minima
+    if (nr_2 < nr_5) {
       nr_0 = nr_2;
-    else
+    } else {
       nr_0 = nr_5;
+    }
   }
 
   return nr_0;

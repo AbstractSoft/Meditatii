@@ -6,6 +6,7 @@ using namespace std;
 void factori_primi() {
   int n;
   cin >> n;
+  
   int d = 2, // d va fi, pe rand, fiecare factor prim din descompunere
       p;     // p va fi puterea lui d in descompunere
 
