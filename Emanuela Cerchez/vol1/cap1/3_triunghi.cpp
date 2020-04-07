@@ -1,4 +1,4 @@
-// Fie x un numar natural format din 5 cifre (X4 X3 X2 X1 XO). Sa se afiseze un
+// Fie x un numar natural format din 5 cifre (X4 X3 X2 X1 X0). Sa se afiseze un
 // triunghi format din cifrele numarului x astfel:
 // - pe prima linie(in varful triunghiului) se va afla cifra din mijloc(x2);
 // - pe linia a doua se vor afla cifrele X3 X2 Xl;

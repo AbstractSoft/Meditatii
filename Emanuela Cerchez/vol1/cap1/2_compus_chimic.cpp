@@ -10,7 +10,7 @@
 
 int main() {
 
-  constexpr std::uint8_t masaC{12};
+  constexpr std::uint8_t masaC{12}; // std::uint8_t este definit in cstdint
   constexpr std::uint8_t masaO{16};
   constexpr std::uint8_t masaH{1};
 
