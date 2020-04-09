@@ -11,8 +11,8 @@ int main() {
   std::cout << "Introduceti raza cercului: ";
   std::cin >> r;
 
-  std::cout << "Aria cercului este: " << M_PI * r * r;
-  std::cout << "Perimetrul cercului este: " << 2 * M_PI * r;
+  std::cout << "Aria cercului este: " << M_PI * r * r << '\n';
+  std::cout << "Perimetrul cercului este: " << 2 * M_PI * r << '\n';
 
   return 0;
 }
