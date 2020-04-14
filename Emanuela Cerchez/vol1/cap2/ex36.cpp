@@ -1,3 +1,7 @@
+// Expresii
+// Fie n un numar natural si x un numar real, citite de la tastatura.
+// Sa se calculeze valoarea expresiei.
+
 #include <cmath>
 #include <iostream>
 

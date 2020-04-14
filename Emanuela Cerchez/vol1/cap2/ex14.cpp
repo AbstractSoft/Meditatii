@@ -13,8 +13,10 @@ struct Copil {
     nume = (char *)std::malloc(sizeof(valoare));
     std::strcpy(nume, valoare);
   }
+  
   char *nume = nullptr;
   std::uint16_t inaltime;
+
   ~Copil() {
     if (nume != nullptr) {
       std::free(nume);
