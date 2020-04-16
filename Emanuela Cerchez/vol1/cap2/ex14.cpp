@@ -13,7 +13,7 @@ struct Copil {
     nume = (char *)std::malloc(sizeof(valoare));
     std::strcpy(nume, valoare);
   }
-  
+
   char *nume = nullptr;
   std::uint16_t inaltime;
 
@@ -44,7 +44,7 @@ int main() {
     gata = true;
     for (int i = 0; i <= nr_copii - 2; i++) {
       if (copii[i].inaltime > copii[i + 1].inaltime) {
-        // ineficient, se creaza copii ale obiectelor, dar e ok pentru moment
+        // Se muta continutul lui copii[i] in aux
         Copil aux = copii[i];
         copii[i] = copii[i + 1];
         copii[i + 1] = aux;
