@@ -15,7 +15,6 @@ using namespace std;
 int calcul_cifra_control(int);
 
 int main() {
-  // cifra de control;
   int n;
 
   cout << "Introduceti un numar natural: ";
