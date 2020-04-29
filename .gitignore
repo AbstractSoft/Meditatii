@@ -3,4 +3,4 @@
 **/*.dat
 .history/
 .DS_Store
-bin/*
+bin/
