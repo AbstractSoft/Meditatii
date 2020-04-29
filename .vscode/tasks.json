@@ -3,16 +3,18 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++.exe build active file",
-            "command": "C:\\ProgramData\\chocolatey\\bin\\g++.exe",
+            "label": "clang++ build active file",
+            "command": "/usr/bin/clang++",
             "args": [
+                "-std=c++17",
+                "-stdlib=libc++",
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/bin/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "C:\\ProgramData\\chocolatey\\bin"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"

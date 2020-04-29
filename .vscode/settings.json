@@ -67,5 +67,5 @@
     "C_Cpp.errorSquiggles": "Enabled",
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "c-cpp-flylint.flexelint.executable":"C:/Program Files/Cppcheck/cppcheck.exe"
+    "code-runner.runInTerminal": true
 }
