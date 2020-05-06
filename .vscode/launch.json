@@ -3,15 +3,16 @@
     "configurations": [
         {
             "name": "clang++ - Build and debug active file",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/bin/${fileBasenameNoExtension}",
             "args": [],
-            "stopAtEntry": false,
+            "env": {
+                "PATH": "${env:HOME}/bin:${env:PATH}"
+            },
             "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "lldb",
+            "terminal": "integrated",
+            "stopOnEntry": false,
             "preLaunchTask": "clang++ build active file"
         }
     ]
