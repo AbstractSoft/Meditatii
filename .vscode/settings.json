@@ -99,5 +99,7 @@
     "C_Cpp.clang_format_fallbackStyle": "none",
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "code-runner.runInTerminal": true
+    "code-runner.runInTerminal": true,
+    "lldb.showDisassembly": "auto",
+    "lldb.dereferencePointers": true
 }
