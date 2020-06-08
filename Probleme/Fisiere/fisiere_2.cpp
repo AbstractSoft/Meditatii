@@ -15,6 +15,7 @@ int main() {
 
   if (!f1.is_open()) {
     std::cerr << "Fisierul nu poate fi deschis";
+    exit(1);
   }
 
   int x1, x2;
