@@ -101,5 +101,16 @@
     "editor.formatOnType": true,
     "code-runner.runInTerminal": true,
     "lldb.showDisassembly": "auto",
-    "lldb.dereferencePointers": true
+    "lldb.dereferencePointers": true,
+    "c-cpp-flylint.language": "c++",
+    "c-cpp-flylint.standard": [
+        "c11",
+        "c++17"
+    ],
+    "c-cpp-flylint.clang.standard": [
+        "c11",
+        "c++17"
+    ],
+    "c-cpp-flylint.flexelint.enable": false,
+    "c-cpp-flylint.clang.enable": false
 }
