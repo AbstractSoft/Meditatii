@@ -27,7 +27,7 @@ int main() {
     c[k++] = b[j];
   }
 
-  for(int i=0; i< n+m;++i) {
-      std::cout << "Elementul [" << i << "] este: " << c[i] << '\n';
+  for (i = 0; i < n + m; ++i) {
+    std::cout << "Elementul [" << i << "] este: " << c[i] << '\n';
   }
 }
