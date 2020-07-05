@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-std::ifstream::pos_type file_size(const string &);
+std::ifstream::pos_type file_size(const std::string &);
 
 int main() {
   std::string nume1, nume2;
@@ -51,7 +51,7 @@ int main() {
   return 0;
 }
 
-std::ifstream::pos_type file_size(const string &filename) {
+std::ifstream::pos_type file_size(const std::string &filename) {
   std::ifstream in(filename, std::ifstream::ate | std::ifstream::binary);
   if (in.is_open()) {
     std::ifstream::pos_type result = in.tellg();
