@@ -26,7 +26,7 @@ int main() {
 
     if (!input_ok) {
       std::cerr << "Valoarea numarul de repetitii ale unei litere trebuie sa "
-                   "fie mai mare decat 0 si mai mica de 2000!\n\n";
+                   "fie mai mare decat 0 si mai mica decat 2000!\n\n";
 
       char raspuns = '\0';
 
@@ -46,8 +46,6 @@ int main() {
         std::cout << "La revedere!\n";
         std::exit(0);
       }
-
-      input_ok = true;
     }
   }
 
@@ -75,7 +73,7 @@ int main() {
 
   f1.close();
 
-  for (uint16_t i = 0; i < nr_max_litere; ++i) {
+  for (uint16_t i = 0; i < nr_max_litere && aparitii[i].litera != '\0'; ++i) {
     if (aparitii[i].nr_aparitii == k) {
       std::cout << "Da\n";
       std::exit(0);
