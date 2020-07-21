@@ -1,30 +1,30 @@
 #include <iostream>
 
 int main() {
-  uint16_t m, n;
+  uint16_t m=5, n=3;
 
-  std::cout << "Introduceti gradul polinomului P: ";
-  std::cin >> n;
+  // std::cout << "Introduceti gradul polinomului P: ";
+  // std::cin >> n;
 
-  std::cout << "Introduceti gradul polinomului Q: ";
-  std::cin >> m;
+  // std::cout << "Introduceti gradul polinomului Q: ";
+  // std::cin >> m;
 
   ++n;
   ++m;
 
   double *coef_P = new double[n]{2, 3, 4, 5};
 
-  for (int i = n - 1; i > -1; --i) {
-    std::cout << "Introduceti coef gradului " << i << " al polinomului P ";
-    std::cin >> coef_P[i];
-  }
+  // for (int i = n - 1; i > -1; --i) {
+  //   std::cout << "Introduceti coef gradului " << i << " al polinomului P ";
+  //   std::cin >> coef_P[i];
+  // }
 
   double *coef_Q = new double[m]{2, 3, 4, 5, 6, 7};
 
-  for (int j = m - 1; j > -1; --j) {
-    std::cout << "Introduceti coef gradului " << j << " al polinomului Q ";
-    std::cin >> coef_Q[j];
-  }
+  // for (int j = m - 1; j > -1; --j) {
+  //   std::cout << "Introduceti coef gradului " << j << " al polinomului Q ";
+  //   std::cin >> coef_Q[j];
+  // }
 
   if (n > m) {
     for (int i = n - 1; i > n - m + 1; --i) {
