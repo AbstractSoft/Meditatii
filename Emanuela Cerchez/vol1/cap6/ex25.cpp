@@ -90,7 +90,7 @@ int main() {
       }
       --ct;
       cout << poz;
-    } else
+    } 
   }
 
   return 0;
