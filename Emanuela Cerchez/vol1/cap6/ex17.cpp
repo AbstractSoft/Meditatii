@@ -12,14 +12,14 @@ int main() {
 
   std::cout << "Introduceti numarul de multimi: ";
   std::cin >> nr_multimi;
-  std::cin.ignore(); // necesar pentru a elimina caracterele nedorite ramase in
-                     // stream
 
   bool **multimi = new bool *[nr_multimi];
   for (int i = 0; i < nr_multimi; ++i) {
     multimi[i] = new bool[nr_elem]{};
   }
 
+  std::cin.ignore(); // necesar pentru a elimina caracterele nedorite ramase in
+                     // stream
   for (int i = 0; i < nr_multimi; ++i) {
     std::string linie{};
     std::cout << "Introduceti elementele multimii " << i + 1
@@ -30,6 +30,8 @@ int main() {
   }
 
   intersectie(multimi, nr_multimi);
+  // reuniune
+  // ...
 
   for (int i = 0; i < nr_multimi; ++i) {
     delete[] multimi[i];
@@ -70,7 +72,9 @@ void populare_vector_caracteristic(std::string linie,
 }
 
 void intersectie(bool **multimi, const uint16_t &nr_multimi) {
+  
   std::cout << "Intersectia contine elementele:\n";
+
   for (int index = 0; index < nr_elem; ++index) {
     bool membru_intersectie = true;
     for (int index_multime = 0; index_multime < nr_multimi; ++index_multime) {

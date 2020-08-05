@@ -91,7 +91,11 @@
         "stack": "cpp",
         "thread": "cpp",
         "hash_map": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "compare": "cpp",
+        "strstream": "cpp",
+        "ranges": "cpp",
+        "stop_token": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
     "C_Cpp.clang_format_path": "/usr/local/Cellar/clang-format",
