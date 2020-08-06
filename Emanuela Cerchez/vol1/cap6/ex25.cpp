@@ -1,97 +1,107 @@
+#include <cstdint>
 #include <fstream>
 #include <iostream>
-using namespace std;
-
-struct coada {
-  char tip;
-  int baut;
-};
 
 struct sticla {
-  int decilitri, nr_sticla;
+  uint16_t decilitri = 0;
+  uint16_t disponibil = 0;
 };
 
-/*int econom(int M, sticla ramas[])
-{
-        int min = ramas[0].decilitri, poz = 0;
-        for (int i = 1; i < M; ++i)
-        {
-                if (ramas[i].decilitri < min)
-                {
-                        min = ramas[i].decilitri;
-                        poz = ramas[i].nr_sticla;
-                }
-        }
-        return min;
-}
+uint16_t index_minim_local(const sticla *sticle, const uint16_t nr_sticle,
+                           const uint16_t index_vechi = UINT16_MAX);
 
-int risipitor(int M, sticla ramas[])
-{
-        int max = ramas[0].decilitri, poz = 0;
-        for (int i = 1; i < M; ++i)
-        {
-                if (ramas[i].decilitri > max)
-                {
-                        max = ramas[i].decilitri;
-                        poz = ramas[i].nr_sticla;
-                }
-        }
-        return max;
-}
-
-int pepsi(int N, int M, int K, coada persoane[], int ramas[])
-{
-        if (persoana[i].tip == 'E')
-        {
-                if()
-        }
-}*/
+constexpr std::string_view nume_fisier_in{"pepsi2.in"};
+constexpr std::string_view nume_fisier_out{"pepsi2.out"};
 
 int main() {
-  ifstream f1("pepsi1.in");
-  ofstream("pepsi1.out");
+  std::ifstream in(
+      std::string("Emanuela Cerchez/vol1/cap6/bin/").append(nume_fisier_in));
+  if (!in.is_open()) {
+    std::cerr << "Fisierul cu numele '" << nume_fisier_in
+              << "' nu poate fi accesat!\n";
+    std::exit(1);
+  }
 
-  int N, M, K, dif;
-  f1 >> N;
-  f1 >> M;
-  f1 >> K;
+  std::ofstream out(
+      std::string("Emanuela Cerchez/vol1/cap6/bin/").append(nume_fisier_out));
+  if (!out.is_open()) {
+    std::cerr << "Fisierul cu numele '" << nume_fisier_out
+              << "' nu poate fi accesat!\n";
+    std::exit(1);
+  }
 
-  coada *persoane = new coada[N];
+  uint16_t N, M, K;
+  in >> N; // nr persoane
+  in >> M; // nr sticle
+  in >> K; // nr decilitri
+
+  char *tip_persoane = new char[N];
   sticla *sticle = new sticla[M];
 
   for (int i = 0; i < N; ++i) {
-    f1 >> persoane[i].tip;
+    in >> tip_persoane[i];
   }
   for (int i = 0; i < M; ++i) {
-    f1 >> sticle[i].decilitri;
-    sticle[i].nr_sticla = i + 1;
+    in >> sticle[i].decilitri;
+    sticle[i].disponibil = K - sticle[i].decilitri;
   }
 
-  /*for (int i = 0; i < M; ++i)
-  {
-          if (sticle[i].decilitri == K)
-          {
-                  continue;
-          }
-          dif = K - sticle[i].decilitri;
-          for (int j= 0; j < dif; ++j)
-          {
-                  cout << sticle[i].nr_sticla<<' ';
-          }	*/
+  uint16_t index = index_minim_local(sticle, M);
+  bool minim_gasit = false;
 
-  int poz, ct = K;
+  // Se parcurge lista de persoane (econom, risipitor)
   for (int i = 0; i < N; ++i) {
-    if (persoane[i].tip == 'E') {
-      for (int j = 0; j < M; ++j) {
-        if (sticle[j].decilitri == 0) {
-          poz = j;
-          break;
-        }
+    if (sticle[index].disponibil == 0) {
+      --i;
+      index = index_minim_local(sticle, M);
+      if (tip_persoane[i] == 'R') {
+        minim_gasit = true;
       }
-      --ct;
-      cout << poz;
-    } 
+      continue;
+    }
+    if (tip_persoane[i] == 'R') {
+      if (minim_gasit) {
+        index = index_minim_local(sticle, M, index);
+        minim_gasit = false;
+      } else {
+        index = index_minim_local(sticle, M);
+        minim_gasit = true;
+      }
+    }
+    out << index + 1 << " " << std::flush;
+    --sticle[index].disponibil;
   }
+
+  // Inchidem fisierele
+  in.close();
+  out.close();
+
+  // Dealocam memoria alocata dinamic (heap)
+  delete[] tip_persoane;
+  delete[] sticle;
 
   return 0;
+}
+
+uint16_t index_minim_local(const sticla *sticle, const uint16_t nr_sticle,
+                           const uint16_t index_vechi) {
+
+  uint16_t min = sticle[0].decilitri;
+  uint16_t index_min = 0;
+
+  for (int j = 1; j < nr_sticle; ++j) {
+    if (sticle[j].disponibil == 0 || index_vechi == j) {
+      continue;
+    }
+
+    if (sticle[j].decilitri < min) {
+      min = sticle[j].decilitri;
+      index_min = j;
+      if (index_min < sticle[j + 1].decilitri) {
+        break;
+      }
+    }
+  }
+
+  return index_min;
 }
