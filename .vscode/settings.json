@@ -108,11 +108,9 @@
     "lldb.dereferencePointers": true,
     "c-cpp-flylint.language": "c++",
     "c-cpp-flylint.standard": [
-        "c11",
         "c++17"
     ],
     "c-cpp-flylint.clang.standard": [
-        "c11",
         "c++17"
     ],
     "c-cpp-flylint.flexelint.enable": false,
