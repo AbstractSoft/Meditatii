@@ -3,15 +3,6 @@
 #include <iomanip>
 #include <iostream>
 
-/*
-Any live cell with two or three live neighbours survives.
-Any dead cell with three live neighbours becomes a live cell.
-All other live cells die in the next generation. Similarly, all other dead cells
-stay dead.
-*/
-
-void clearScreen(void);
-
 constexpr uint16_t nr_vecini{8};
 constexpr uint16_t nr_linii{20};
 constexpr uint16_t nr_coloane{20};
@@ -23,7 +14,7 @@ struct celula {
   celula *(*tabla)[nr_linii][nr_coloane]{};
 
   celula(celula *(*tabla)[nr_linii][nr_coloane], const uint16_t linie,
-         const uint16_t coloana, bool vie = false) {
+         const uint16_t coloana, bool vie = false /* parametru optional */) {
     this->tabla = tabla;
     this->linie = linie;
     this->coloana = coloana;
@@ -75,7 +66,6 @@ struct celula {
       }
 
       if (coloana - 1 >= 0) {
-
         if ((*(*tabla)[linie + 1][coloana - 1]).vie) {
           ++nr_vecini_vii;
         }
@@ -104,49 +94,17 @@ int main() {
 
     for (; linie < nr_linii; ++linie) {
       for (uint16_t coloana = 0; coloana < nr_coloane; ++coloana) {
+        tabla[linie][coloana]->actualizare();
         if (tabla[linie][coloana]->vie) {
           std::cout << std::setw(nr_coloane) << "x" << std::flush;
         }
       }
     }
 
-    for (uint16_t linii_ecran = 0; linii_ecran < 40; ++linii_ecran) {
-      std::cout << std::endl;
+    for (uint16_t linii_ecran = 0; linii_ecran < nr_linii; ++linii_ecran) {
+      std::cout << std::endl; // ???
     }
   }
 
   return 0;
-}
-
-void clearScreen(void) {
-// Tested and working on Ubuntu and Cygwin
-#if defined(OS_WIN)
-  HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
-  DWORD count;
-  DWORD cellCount;
-  COORD homeCoords = {0, 0};
-
-  if (hStdOut == INVALID_HANDLE_VALUE)
-    return;
-
-  /* Get the number of cells in the current buffer */
-  GetConsoleScreenBufferInfo(hStdOut, &csbi);
-  cellCount = csbi.dwSize.X * csbi.dwSize.Y;
-
-  /* Fill the entire buffer with spaces */
-  FillConsoleOutputCharacter(hStdOut, (TCHAR)' ', cellCount, homeCoords,
-                             &count);
-
-  /* Fill the entire buffer with the current colors and attributes */
-  FillConsoleOutputAttribute(hStdOut, csbi.wAttributes, cellCount, homeCoords,
-                             &count);
-
-  SetConsoleCursorPosition(hStdOut, homeCoords);
-
-#elif defined(OS_LINUX) || defined(OS_MAC)
-  cout << "\033[2J;"
-       << "\033[1;1H"; // Clears screen and moves cursor to home pos on POSIX
-                       // systems
-#endif
 }
