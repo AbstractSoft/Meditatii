@@ -11,7 +11,7 @@
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64",
             "macFrameworkPath": [
-                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk"
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
             ]
         }
     ],
