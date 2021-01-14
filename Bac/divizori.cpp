@@ -61,6 +61,8 @@ void divizori(const uint16_t &n, uint16_t &x, uint16_t &y, uint16_t &z) {
           z = v_div[i];
           y = v_div[j];
           x = v_div[k];
+
+          break;
         }
       }
     }
