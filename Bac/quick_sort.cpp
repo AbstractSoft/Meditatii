@@ -8,7 +8,7 @@ void swap(int *a, int *b) {
 }
 
 int partition(int arr[], const int low, const int high, const int pivot_index) {
-  int pivot = arr[low];
+  int pivot = arr[pivot_index];
   int i = low;
   int j = high;
 
@@ -36,14 +36,14 @@ int partition(int arr[], const int low, const int high, const int pivot_index) {
     }
   } while (i < j);
 
-  swap(&arr[low], &arr[j]);
+  swap(&arr[pivot_index], &arr[j]);
 
   return j;
 }
 
 void quickSort(int arr[], int low, int high, const int pivot_index) {
   if (low < high) {
-    int pi = partition(arr, low, high, low);
+    int pi = partition(arr, low, high, pivot_index);
 
     quickSort(arr, low, pi - 1, pivot_index);
     quickSort(arr, pi + 1, high, pivot_index);
@@ -60,7 +60,7 @@ void printArray(int arr[], int size) {
 
 // Driver Code
 int main() {
-  int arr[] = {10, 3, 25, 12, 1, 5, 48, 23, 2, 8, 40, 35};
+  int arr[] = {10, 3, 25, 12, 1, 5};
   int n = sizeof(arr) / sizeof(arr[0]);
 
   auto startTime = std::chrono::high_resolution_clock::now();
